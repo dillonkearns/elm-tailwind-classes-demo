@@ -4,6 +4,7 @@ dist/
 .cache/
 gen/
 .elm-pages
+.elm-tailwind/
 functions/server-render
 functions/render
 
