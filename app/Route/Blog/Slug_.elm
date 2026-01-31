@@ -11,7 +11,6 @@ import RouteBuilder exposing (App, StatelessRoute)
 import Shared
 import Tailwind
 import Tailwind.Theme as T
-import Tailwind.Utilities
 import View exposing (View)
 
 
@@ -88,20 +87,20 @@ view app sharedModel =
     , body =
         [ Html.h1
             [ Tailwind.classes
-                [ Tailwind.Utilities.text_color T.red T.s400
+                [ Tailwind.text_color (T.red T.s400)
                 ]
             ]
             [ Html.text "This should be red" ]
         , Html.h2
             [ Tailwind.classes
-                [ Tailwind.Utilities.text_color T.green T.s400
+                [ Tailwind.text_color (T.green T.s400)
                 ]
             ]
             [ Html.text "You're on the page Blog.Slug_"
             ]
         , Html.h2
             [ Tailwind.classes
-                [ Tailwind.Utilities.text_color T.cyan T.s700
+                [ Tailwind.text_color (T.cyan T.s700)
                 ]
             ]
             [ Html.text "This should be blue" ]

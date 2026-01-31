@@ -11,10 +11,9 @@ import PagesMsg exposing (PagesMsg)
 import Route
 import RouteBuilder exposing (App, StatelessRoute)
 import Shared
-import Tailwind exposing (classes, raw)
+import Tailwind as Tw exposing (classes, raw)
 import Tailwind.Breakpoints as Bp
 import Tailwind.Theme as T
-import Tailwind.Utilities as Tw
 import UrlPath
 import View exposing (View)
 
@@ -89,7 +88,7 @@ view app shared =
     }
 
 
-container : List Tailwind.Tailwind -> List Tailwind.Tailwind
+container : List Tw.Tailwind -> List Tw.Tailwind
 container extra =
     [ raw "max-w-6xl"
     , raw "mx-auto"
@@ -126,7 +125,7 @@ heroSection =
                     , Tw.font_semibold
                     , raw "tracking-tight"
                     , raw "text-balance"
-                    , Tw.text_color T.gray T.s900
+                    , Tw.text_color (T.gray T.s900)
                     , Bp.sm [ Tw.text_n5xl ]
                     ]
                 ]
@@ -143,14 +142,14 @@ heroSection =
                     [ Attr.href "#get-started"
                     , classes
                         [ Tw.rounded_md
-                        , Tw.bg_color T.indigo T.s600
+                        , Tw.bg_color (T.indigo T.s600)
                         , raw "px-3.5"
                         , Tw.py T.s2_dot_5
                         , Tw.text_sm
                         , Tw.font_semibold
                         , raw "text-white"
                         , raw "shadow-xs"
-                        , Bp.hover [ Tw.bg_color T.indigo T.s500 ]
+                        , Bp.hover [ Tw.bg_color (T.indigo T.s500) ]
                         ]
                     ]
                     [ Html.text "Get started" ]
@@ -160,7 +159,7 @@ heroSection =
                     , classes
                         [ Tw.text_sm
                         , Tw.font_semibold
-                        , Tw.text_color T.gray T.s900
+                        , Tw.text_color (T.gray T.s900)
                         ]
                     ]
                     [ Html.text "Learn more "
@@ -181,7 +180,7 @@ featuresSection =
         [ Attr.id "features"
         , classes
             [ Tw.py T.s24
-            , Tw.bg_color T.gray T.s50
+            , Tw.bg_color (T.gray T.s50)
             ]
         ]
         [ Html.div
@@ -192,7 +191,7 @@ featuresSection =
                     [ classes
                         [ Tw.text_sm
                         , Tw.font_semibold
-                        , Tw.text_color T.indigo T.s600
+                        , Tw.text_color (T.indigo T.s600)
                         , Tw.uppercase
                         , raw "tracking-wide"
                         ]
@@ -205,7 +204,7 @@ featuresSection =
                         , Bp.md [ Tw.text_n4xl ]
                         , Tw.font_bold
                         , raw "tracking-tight"
-                        , Tw.text_color T.gray T.s900
+                        , Tw.text_color (T.gray T.s900)
                         ]
                     ]
                     [ Html.text "Why elm-tailwind-classes?" ]
@@ -222,7 +221,7 @@ featuresSection =
                     { color = T.green
                     , title = "Compiler-Verified Styles"
                     , description = "Misspelled bg-bluue-500? The Elm compiler catches it instantly. No more silent failures or hunting for typos in class strings."
-                    , codeExample = "Tw.bg_color T.blue T.s500"
+                    , codeExample = "Tw.bg_color (T.blue T.s500)"
                     }
                 , featureCard
                     { color = T.purple
@@ -248,7 +247,7 @@ featuresSection =
 
 
 featureCard :
-    { color : T.Color
+    { color : T.Shade -> T.Color
     , title : String
     , description : String
     , codeExample : String
@@ -270,7 +269,7 @@ featureCard { color, title, description, codeExample } =
                 [ Tw.w T.s10
                 , Tw.h T.s10
                 , Tw.rounded_lg
-                , Tw.bg_color color T.s600
+                , Tw.bg_color (color T.s600)
                 , Tw.flex
                 , Tw.items_center
                 , Tw.justify_center
@@ -292,14 +291,14 @@ featureCard { color, title, description, codeExample } =
             [ classes
                 [ Tw.text_lg
                 , Tw.font_semibold
-                , Tw.text_color T.gray T.s900
+                , Tw.text_color (T.gray T.s900)
                 , Tw.mb T.s2
                 ]
             ]
             [ Html.text title ]
         , Html.p
             [ classes
-                [ Tw.text_color T.gray T.s600
+                [ Tw.text_color (T.gray T.s600)
                 , raw "leading-7"
                 ]
             ]
@@ -311,8 +310,8 @@ featureCard { color, title, description, codeExample } =
             Html.code
                 [ classes
                     [ Tw.text_sm
-                    , Tw.bg_color T.gray T.s100
-                    , Tw.text_color T.gray T.s700
+                    , Tw.bg_color (T.gray T.s100)
+                    , Tw.text_color (T.gray T.s700)
                     , Tw.px T.s3
                     , Tw.py T.s1
                     , Tw.rounded_md
@@ -345,7 +344,7 @@ codeExampleSection =
                     [ classes
                         [ Tw.text_sm
                         , Tw.font_semibold
-                        , Tw.text_color T.indigo T.s600
+                        , Tw.text_color (T.indigo T.s600)
                         , Tw.uppercase
                         , raw "tracking-wide"
                         ]
@@ -358,7 +357,7 @@ codeExampleSection =
                         , Bp.md [ Tw.text_n4xl ]
                         , Tw.font_bold
                         , raw "tracking-tight"
-                        , Tw.text_color T.gray T.s900
+                        , Tw.text_color (T.gray T.s900)
                         ]
                     ]
                     [ Html.text "Write Elm, Get Tailwind" ]
@@ -366,7 +365,7 @@ codeExampleSection =
                     [ classes
                         [ Tw.mt T.s4
                         , Tw.text_lg
-                        , Tw.text_color T.gray T.s600
+                        , Tw.text_color (T.gray T.s600)
                         , raw "max-w-2xl"
                         , raw "mx-auto"
                         ]
@@ -375,7 +374,7 @@ codeExampleSection =
                 ]
             , Html.div
                 [ classes
-                    [ Tw.bg_color T.gray T.s900
+                    [ Tw.bg_color (T.gray T.s900)
                     , Tw.rounded_n2xl
                     , Tw.overflow_hidden
                     , Tw.shadow_xl
@@ -394,11 +393,11 @@ codeExampleSection =
                         , raw "border-white/10"
                         ]
                     ]
-                    [ Html.div [ classes [ Tw.w T.s3, Tw.h T.s3, Tw.rounded_full, Tw.bg_color T.red T.s500 ] ] []
-                    , Html.div [ classes [ Tw.w T.s3, Tw.h T.s3, Tw.rounded_full, Tw.bg_color T.yellow T.s500 ] ] []
-                    , Html.div [ classes [ Tw.w T.s3, Tw.h T.s3, Tw.rounded_full, Tw.bg_color T.green T.s500 ] ] []
+                    [ Html.div [ classes [ Tw.w T.s3, Tw.h T.s3, Tw.rounded_full, Tw.bg_color (T.red T.s500) ] ] []
+                    , Html.div [ classes [ Tw.w T.s3, Tw.h T.s3, Tw.rounded_full, Tw.bg_color (T.yellow T.s500) ] ] []
+                    , Html.div [ classes [ Tw.w T.s3, Tw.h T.s3, Tw.rounded_full, Tw.bg_color (T.green T.s500) ] ] []
                     , Html.span
-                        [ classes [ Tw.ml T.s4, Tw.text_sm, Tw.text_color T.gray T.s400 ] ]
+                        [ classes [ Tw.ml T.s4, Tw.text_sm, Tw.text_color (T.gray T.s400) ] ]
                         [ Html.text "Button.elm" ]
                     ]
                 , Html.pre
@@ -410,42 +409,40 @@ codeExampleSection =
                         ]
                     ]
                     [ Html.code
-                        [ classes [ Tw.text_color T.gray T.s300 ] ]
-                        [ Html.span [ classes [ Tw.text_color T.pink T.s400 ] ] [ Html.text "import " ]
+                        [ classes [ Tw.text_color (T.gray T.s300) ] ]
+                        [ Html.span [ classes [ Tw.text_color (T.pink T.s400) ] ] [ Html.text "import " ]
                         , Html.text "Tailwind "
-                        , Html.span [ classes [ Tw.text_color T.pink T.s400 ] ] [ Html.text "exposing " ]
+                        , Html.span [ classes [ Tw.text_color (T.pink T.s400) ] ] [ Html.text "as " ]
+                        , Html.text "Tw "
+                        , Html.span [ classes [ Tw.text_color (T.pink T.s400) ] ] [ Html.text "exposing " ]
                         , Html.text "(classes)\n"
-                        , Html.span [ classes [ Tw.text_color T.pink T.s400 ] ] [ Html.text "import " ]
-                        , Html.text "Tailwind.Utilities "
-                        , Html.span [ classes [ Tw.text_color T.pink T.s400 ] ] [ Html.text "as " ]
-                        , Html.text "Tw\n"
-                        , Html.span [ classes [ Tw.text_color T.pink T.s400 ] ] [ Html.text "import " ]
+                        , Html.span [ classes [ Tw.text_color (T.pink T.s400) ] ] [ Html.text "import " ]
                         , Html.text "Tailwind.Theme "
-                        , Html.span [ classes [ Tw.text_color T.pink T.s400 ] ] [ Html.text "as " ]
+                        , Html.span [ classes [ Tw.text_color (T.pink T.s400) ] ] [ Html.text "as " ]
                         , Html.text "T\n"
-                        , Html.span [ classes [ Tw.text_color T.pink T.s400 ] ] [ Html.text "import " ]
+                        , Html.span [ classes [ Tw.text_color (T.pink T.s400) ] ] [ Html.text "import " ]
                         , Html.text "Tailwind.Breakpoints "
-                        , Html.span [ classes [ Tw.text_color T.pink T.s400 ] ] [ Html.text "as " ]
+                        , Html.span [ classes [ Tw.text_color (T.pink T.s400) ] ] [ Html.text "as " ]
                         , Html.text "Bp\n\n"
-                        , Html.span [ classes [ Tw.text_color T.sky T.s400 ] ] [ Html.text "button " ]
+                        , Html.span [ classes [ Tw.text_color (T.sky T.s400) ] ] [ Html.text "button " ]
                         , Html.text "=\n    Html.button\n        [ "
-                        , Html.span [ classes [ Tw.text_color T.yellow T.s300 ] ] [ Html.text "classes" ]
+                        , Html.span [ classes [ Tw.text_color (T.yellow T.s300) ] ] [ Html.text "classes" ]
                         , Html.text "\n            [ "
-                        , Html.span [ classes [ Tw.text_color T.green T.s400 ] ] [ Html.text "Tw.px T.s6" ]
+                        , Html.span [ classes [ Tw.text_color (T.green T.s400) ] ] [ Html.text "Tw.px T.s6" ]
                         , Html.text "\n            , "
-                        , Html.span [ classes [ Tw.text_color T.green T.s400 ] ] [ Html.text "Tw.py T.s3" ]
+                        , Html.span [ classes [ Tw.text_color (T.green T.s400) ] ] [ Html.text "Tw.py T.s3" ]
                         , Html.text "\n            , "
-                        , Html.span [ classes [ Tw.text_color T.green T.s400 ] ] [ Html.text "Tw.bg_color T.indigo T.s600" ]
+                        , Html.span [ classes [ Tw.text_color (T.green T.s400) ] ] [ Html.text "Tw.bg_color (T.indigo T.s600)" ]
                         , Html.text "\n            , "
-                        , Html.span [ classes [ Tw.text_color T.green T.s400 ] ] [ Html.text "Tw.text_simple T.white" ]
+                        , Html.span [ classes [ Tw.text_color (T.green T.s400) ] ] [ Html.text "Tw.text_simple T.white" ]
                         , Html.text "\n            , "
-                        , Html.span [ classes [ Tw.text_color T.green T.s400 ] ] [ Html.text "Tw.rounded_lg" ]
+                        , Html.span [ classes [ Tw.text_color (T.green T.s400) ] ] [ Html.text "Tw.rounded_lg" ]
                         , Html.text "\n            , "
-                        , Html.span [ classes [ Tw.text_color T.purple T.s400 ] ] [ Html.text "Bp.hover" ]
+                        , Html.span [ classes [ Tw.text_color (T.purple T.s400) ] ] [ Html.text "Bp.hover" ]
                         , Html.text " [ "
-                        , Html.span [ classes [ Tw.text_color T.green T.s400 ] ] [ Html.text "Tw.bg_color T.indigo T.s500" ]
+                        , Html.span [ classes [ Tw.text_color (T.green T.s400) ] ] [ Html.text "Tw.bg_color (T.indigo T.s500)" ]
                         , Html.text " ]\n            ]\n        ]\n        [ Html.text "
-                        , Html.span [ classes [ Tw.text_color T.orange T.s300 ] ] [ Html.text "\"Click me\"" ]
+                        , Html.span [ classes [ Tw.text_color (T.orange T.s300) ] ] [ Html.text "\"Click me\"" ]
                         , Html.text " ]"
                         ]
                     ]
@@ -464,7 +461,7 @@ interactiveDemo =
         [ Attr.id "examples"
         , classes
             [ Tw.py T.s24
-            , Tw.bg_color T.gray T.s50
+            , Tw.bg_color (T.gray T.s50)
             ]
         ]
         [ Html.div
@@ -475,7 +472,7 @@ interactiveDemo =
                     [ classes
                         [ Tw.text_sm
                         , Tw.font_semibold
-                        , Tw.text_color T.indigo T.s600
+                        , Tw.text_color (T.indigo T.s600)
                         , Tw.uppercase
                         , raw "tracking-wide"
                         ]
@@ -488,7 +485,7 @@ interactiveDemo =
                         , Bp.md [ Tw.text_n4xl ]
                         , Tw.font_bold
                         , raw "tracking-tight"
-                        , Tw.text_color T.gray T.s900
+                        , Tw.text_color (T.gray T.s900)
                         ]
                     ]
                     [ Html.text "See It In Action" ]
@@ -496,7 +493,7 @@ interactiveDemo =
                     [ classes
                         [ Tw.mt T.s4
                         , Tw.text_lg
-                        , Tw.text_color T.gray T.s600
+                        , Tw.text_color (T.gray T.s600)
                         ]
                     ]
                     [ Html.text "This entire page is styled using elm-tailwind-classes." ]
@@ -516,14 +513,14 @@ interactiveDemo =
                             [ classes
                                 [ Tw.px T.s4
                                 , Tw.py T.s2
-                                , Tw.bg_color T.indigo T.s600
+                                , Tw.bg_color (T.indigo T.s600)
                                 , Tw.text_simple T.white
                                 , Tw.rounded_lg
                                 , Tw.text_sm
                                 , Tw.font_semibold
                                 , Tw.shadow_sm
                                 , Tw.transition
-                                , Bp.hover [ Tw.bg_color T.indigo T.s500 ]
+                                , Bp.hover [ Tw.bg_color (T.indigo T.s500) ]
                                 ]
                             ]
                             [ Html.text "Primary" ]
@@ -532,7 +529,7 @@ interactiveDemo =
                                 [ Tw.px T.s4
                                 , Tw.py T.s2
                                 , Tw.bg_simple T.white
-                                , Tw.text_color T.gray T.s900
+                                , Tw.text_color (T.gray T.s900)
                                 , Tw.rounded_lg
                                 , Tw.text_sm
                                 , Tw.font_semibold
@@ -540,7 +537,7 @@ interactiveDemo =
                                 , raw "ring-1"
                                 , raw "ring-gray-300"
                                 , Tw.transition
-                                , Bp.hover [ Tw.bg_color T.gray T.s50 ]
+                                , Bp.hover [ Tw.bg_color (T.gray T.s50) ]
                                 ]
                             ]
                             [ Html.text "Secondary" ]
@@ -548,14 +545,14 @@ interactiveDemo =
                             [ classes
                                 [ Tw.px T.s4
                                 , Tw.py T.s2
-                                , Tw.bg_color T.red T.s600
+                                , Tw.bg_color (T.red T.s600)
                                 , Tw.text_simple T.white
                                 , Tw.rounded_lg
                                 , Tw.text_sm
                                 , Tw.font_semibold
                                 , Tw.shadow_sm
                                 , Tw.transition
-                                , Bp.hover [ Tw.bg_color T.red T.s500 ]
+                                , Bp.hover [ Tw.bg_color (T.red T.s500) ]
                                 ]
                             ]
                             [ Html.text "Danger" ]
@@ -564,11 +561,11 @@ interactiveDemo =
                 , demoCard "Typography Scale"
                     [ Html.div
                         [ classes [ Tw.flex, Tw.flex_col, Tw.gap T.s1 ] ]
-                        [ Html.span [ classes [ Tw.text_xs, Tw.text_color T.gray T.s900 ] ] [ Html.text "text_xs - The quick brown fox" ]
-                        , Html.span [ classes [ Tw.text_sm, Tw.text_color T.gray T.s900 ] ] [ Html.text "text_sm - The quick brown fox" ]
-                        , Html.span [ classes [ Tw.text_base, Tw.text_color T.gray T.s900 ] ] [ Html.text "text_base - The quick brown fox" ]
-                        , Html.span [ classes [ Tw.text_lg, Tw.text_color T.gray T.s900 ] ] [ Html.text "text_lg - The quick brown fox" ]
-                        , Html.span [ classes [ Tw.text_xl, Tw.text_color T.gray T.s900 ] ] [ Html.text "text_xl - The quick brown fox" ]
+                        [ Html.span [ classes [ Tw.text_xs, Tw.text_color (T.gray T.s900) ] ] [ Html.text "text_xs - The quick brown fox" ]
+                        , Html.span [ classes [ Tw.text_sm, Tw.text_color (T.gray T.s900) ] ] [ Html.text "text_sm - The quick brown fox" ]
+                        , Html.span [ classes [ Tw.text_base, Tw.text_color (T.gray T.s900) ] ] [ Html.text "text_base - The quick brown fox" ]
+                        , Html.span [ classes [ Tw.text_lg, Tw.text_color (T.gray T.s900) ] ] [ Html.text "text_lg - The quick brown fox" ]
+                        , Html.span [ classes [ Tw.text_xl, Tw.text_color (T.gray T.s900) ] ] [ Html.text "text_xl - The quick brown fox" ]
                         ]
                     ]
                 , demoCard "Spacing Utilities"
@@ -602,7 +599,7 @@ demoCard title content =
             [ classes
                 [ Tw.text_sm
                 , Tw.font_semibold
-                , Tw.text_color T.gray T.s900
+                , Tw.text_color (T.gray T.s900)
                 , Tw.mb T.s4
                 ]
             ]
@@ -619,7 +616,7 @@ spacingBox spacing label =
             [ classes
                 [ Tw.w spacing
                 , Tw.h spacing
-                , Tw.bg_color T.indigo T.s600
+                , Tw.bg_color (T.indigo T.s600)
                 , Tw.rounded_md
                 ]
             ]
@@ -627,7 +624,7 @@ spacingBox spacing label =
         , Html.span
             [ classes
                 [ Tw.text_xs
-                , Tw.text_color T.gray T.s500
+                , Tw.text_color (T.gray T.s500)
                 ]
             ]
             [ Html.text label ]
@@ -655,7 +652,7 @@ getStartedSection =
                     [ classes
                         [ Tw.text_sm
                         , Tw.font_semibold
-                        , Tw.text_color T.indigo T.s600
+                        , Tw.text_color (T.indigo T.s600)
                         , Tw.uppercase
                         , raw "tracking-wide"
                         ]
@@ -668,7 +665,7 @@ getStartedSection =
                         , Bp.md [ Tw.text_n4xl ]
                         , Tw.font_bold
                         , raw "tracking-tight"
-                        , Tw.text_color T.gray T.s900
+                        , Tw.text_color (T.gray T.s900)
                         ]
                     ]
                     [ Html.text "Get Started in Minutes" ]
@@ -676,14 +673,14 @@ getStartedSection =
                     [ classes
                         [ Tw.mt T.s4
                         , Tw.text_lg
-                        , Tw.text_color T.gray T.s600
+                        , Tw.text_color (T.gray T.s600)
                         ]
                     ]
                     [ Html.text "Add elm-tailwind-classes to your Vite project and start using type-safe Tailwind in your Elm code." ]
                 ]
             , Html.div
                 [ classes
-                    [ Tw.bg_color T.gray T.s900
+                    [ Tw.bg_color (T.gray T.s900)
                     , Tw.rounded_xl
                     , Tw.p T.s4
                     , Tw.mb T.s12
@@ -693,12 +690,12 @@ getStartedSection =
                 ]
                 [ Html.code
                     [ classes
-                        [ Tw.text_color T.gray T.s300
+                        [ Tw.text_color (T.gray T.s300)
                         , Tw.font_mono
                         , Tw.text_sm
                         ]
                     ]
-                    [ Html.span [ classes [ Tw.text_color T.gray T.s500 ] ] [ Html.text "$ " ]
+                    [ Html.span [ classes [ Tw.text_color (T.gray T.s500) ] ] [ Html.text "$ " ]
                     , Html.text "npm install github:dillonkearns/elm-tailwind-classes # install beta"
                     ]
                 ]
@@ -725,7 +722,7 @@ getStartedSection =
                         [ Tw.inline_flex
                         , Tw.items_center
                         , Tw.gap T.s2
-                        , Tw.bg_color T.indigo T.s600
+                        , Tw.bg_color (T.indigo T.s600)
                         , Tw.text_simple T.white
                         , Tw.px T.s6
                         , Tw.py T.s3
@@ -733,7 +730,7 @@ getStartedSection =
                         , Tw.font_semibold
                         , Tw.shadow_sm
                         , Tw.transition
-                        , Bp.hover [ Tw.bg_color T.indigo T.s500 ]
+                        , Bp.hover [ Tw.bg_color (T.indigo T.s500) ]
                         ]
                     ]
                     [ Html.text "Read the Documentation" ]
@@ -755,7 +752,7 @@ stepCard number title description =
                 [ Tw.w T.s12
                 , Tw.h T.s12
                 , Tw.rounded_full
-                , Tw.bg_color T.indigo T.s600
+                , Tw.bg_color (T.indigo T.s600)
                 , Tw.text_simple T.white
                 , Tw.flex
                 , Tw.items_center
@@ -770,13 +767,13 @@ stepCard number title description =
         , Html.h3
             [ classes
                 [ Tw.font_semibold
-                , Tw.text_color T.gray T.s900
+                , Tw.text_color (T.gray T.s900)
                 , Tw.text_lg
                 , Tw.mb T.s2
                 ]
             ]
             [ Html.text title ]
         , Html.p
-            [ classes [ Tw.text_color T.gray T.s600, Tw.text_sm ] ]
+            [ classes [ Tw.text_color (T.gray T.s600), Tw.text_sm ] ]
             [ Html.text description ]
         ]

@@ -10,10 +10,9 @@ import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
 import Route exposing (Route)
 import SharedTemplate exposing (SharedTemplate)
-import Tailwind exposing (classes, raw)
+import Tailwind as Tw exposing (classes, raw)
 import Tailwind.Breakpoints as Bp
 import Tailwind.Theme as T
-import Tailwind.Utilities as Tw
 import UrlPath exposing (UrlPath)
 import View exposing (View)
 
@@ -147,7 +146,7 @@ navbar model toMsg =
                         [ classes
                             [ Tw.w T.s8
                             , Tw.h T.s8
-                            , Tw.bg_color T.indigo T.s600
+                            , Tw.bg_color (T.indigo T.s600)
                             , Tw.rounded_lg
                             , Tw.flex
                             , Tw.items_center
@@ -166,7 +165,7 @@ navbar model toMsg =
                     , Html.span
                         [ classes
                             [ Tw.font_semibold
-                            , Tw.text_color T.slate T.s900
+                            , Tw.text_color (T.slate T.s900)
                             ]
                         ]
                         [ Html.text "elm-tailwind-classes" ]
@@ -186,7 +185,7 @@ navbar model toMsg =
                         [ Attr.href "https://github.com/dillonkearns/elm-tailwind-classes"
                         , Attr.target "_blank"
                         , classes
-                            [ Tw.bg_color T.indigo T.s600
+                            [ Tw.bg_color (T.indigo T.s600)
                             , Tw.text_simple T.white
                             , Tw.px T.s4
                             , Tw.py T.s2
@@ -194,7 +193,7 @@ navbar model toMsg =
                             , Tw.text_sm
                             , Tw.font_medium
                             , Tw.transition
-                            , Bp.hover [ Tw.bg_color T.indigo T.s700 ]
+                            , Bp.hover [ Tw.bg_color (T.indigo T.s700) ]
                             ]
                         ]
                         [ Html.text "GitHub" ]
@@ -204,9 +203,9 @@ navbar model toMsg =
                     , classes
                         [ Tw.p T.s2
                         , Tw.rounded_lg
-                        , Tw.text_color T.slate T.s600
+                        , Tw.text_color (T.slate T.s600)
                         , Tw.transition
-                        , Bp.hover [ Tw.bg_color T.slate T.s100 ]
+                        , Bp.hover [ Tw.bg_color (T.slate T.s100) ]
                         , Bp.md [ Tw.hidden ]
                         ]
                     ]
@@ -223,7 +222,7 @@ navbar model toMsg =
                         [ Tw.mt T.s4
                         , Tw.py T.s4
                         , Tw.border_t
-                        , Tw.border_color T.slate T.s200
+                        , Tw.border_color (T.slate T.s200)
                         , Bp.md [ Tw.hidden ]
                         ]
                     ]
@@ -236,7 +235,7 @@ navbar model toMsg =
                             [ Attr.href "https://github.com/dillonkearns/elm-tailwind-classes"
                             , Attr.target "_blank"
                             , classes
-                                [ Tw.bg_color T.indigo T.s600
+                                [ Tw.bg_color (T.indigo T.s600)
                                 , Tw.text_simple T.white
                                 , Tw.px T.s4
                                 , Tw.py T.s2
@@ -261,11 +260,11 @@ navLink label href =
     Html.a
         [ Attr.href href
         , classes
-            [ Tw.text_color T.slate T.s600
+            [ Tw.text_color (T.slate T.s600)
             , Tw.text_sm
             , Tw.font_medium
             , Tw.transition
-            , Bp.hover [ Tw.text_color T.indigo T.s600 ]
+            , Bp.hover [ Tw.text_color (T.indigo T.s600) ]
             ]
         ]
         [ Html.text label ]
@@ -276,7 +275,7 @@ mobileNavLink label href =
     Html.a
         [ Attr.href href
         , classes
-            [ Tw.text_color T.slate T.s700
+            [ Tw.text_color (T.slate T.s700)
             , Tw.font_medium
             , Tw.py T.s2
             ]
@@ -288,8 +287,8 @@ footer : Html msg
 footer =
     Html.footer
         [ classes
-            [ Tw.bg_color T.slate T.s900
-            , Tw.text_color T.slate T.s400
+            [ Tw.bg_color (T.slate T.s900)
+            , Tw.text_color (T.slate T.s400)
             , Tw.py T.s12
             , Tw.px T.s6
             ]
@@ -316,7 +315,7 @@ footer =
                         [ classes
                             [ Tw.w T.s8
                             , Tw.h T.s8
-                            , Tw.bg_color T.indigo T.s600
+                            , Tw.bg_color (T.indigo T.s600)
                             , Tw.rounded_lg
                             , Tw.flex
                             , Tw.items_center
@@ -377,7 +376,7 @@ footer =
                     [ Tw.mt T.s8
                     , Tw.pt T.s8
                     , Tw.border_t
-                    , Tw.border_color T.slate T.s800
+                    , Tw.border_color (T.slate T.s800)
                     , Tw.text_center
                     , Tw.text_sm
                     ]
