@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import adapter from "elm-pages/adapter/netlify.js";
-import { elmTailwind } from "elm-tailwind-classes";
+import { elmTailwind } from "elm-tailwind-classes/vite";
 import tailwindcss from "@tailwindcss/vite";
 
 export default {
